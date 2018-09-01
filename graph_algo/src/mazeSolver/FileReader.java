@@ -26,6 +26,7 @@ public class FileReader {
 		for(int i=0;i<this.noOfRows;i++) {
 			for(int j=0;j<this.noOfCols;j++) {
 				map[i][j]=scanner.nextInt();
+				//new message
 			}
 			
 		}
