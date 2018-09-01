@@ -42,7 +42,7 @@ public class Vertex {
 	}
 	@Override
 	public String toString() {
-		return "Vertex [name=" + name + "]";
+		return "Vertex [" + name + "]";
 	}
 	
 	
