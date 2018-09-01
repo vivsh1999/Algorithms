@@ -30,7 +30,10 @@ public class FileReader {
 			}
 			
 		}
+		}catch(Exception e){
+			
 		}
 	}
 	
 }
+	
