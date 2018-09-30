@@ -4,6 +4,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	
 	private Node<T> root;//root node
 	
+	@Override
 	public void insert(T data) {
 		if(root==null) {
 			root=new Node<T>(data);
@@ -15,12 +16,60 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
 	@Override
 	public void traversal() {
-		// TODO Auto-generated method stub
+		if(root!=null) {
+			inOrderTraverse(root);
+		}
 		
 	}
+	private Node<T> delete(Node<T> node, T data) {
+		if(node==null)return null;
+		if(data.compareTo(node.getData())<0) {
+			node.setLeftChild(delete(node.getLeftChild(),data));
+		}else if(data.compareTo(node.getData())>0)
+			node.setRightChild(delete(node.getRightChild(),data));
+		else {
+			if(node.getLeftChild()==null&&node.getRightChild()==null) {
+				System.out.println("removing a leaf node...");
+				return null;
+			}else
+				if(node.getLeftChild()==null) {
+					System.out.println("Removing the right child...");
+					Node<T> temp=node.getRightChild();
+					node=null;
+					return temp;
+				}else
+					if(node.getRightChild()==null) {
+						System.out.println("Removing the left child...");
+						Node<T> temp=node.getLeftChild();
+						node=null;
+						return temp;
+					}
+			//this is the case where node has both the child
+			System.out.println("removing node with 2 child...");
+			Node<T> tempNode=getPredessesor(node.getLeftChild());
+			node.setData(tempNode.getData());
+			node.setLeftChild(delete(node.getLeftChild(),tempNode.getData()));
+			
+		}
+		return node;
+	}
+	
+	private Node<T> getPredessesor(Node<T> node) {
+		if(node.getRightChild()!=null)
+			return getPredessesor(node.getRightChild());
+		return node;
+	}
+	
+	private void inOrderTraverse(Node<T> node) {
+		if(node.getLeftChild()!=null)
+			inOrderTraverse(node.getLeftChild());
+		System.out.print(node+"->");
+		if(node.getRightChild()!=null) {
+			inOrderTraverse(node.getRightChild());
+		}
+	}
 	//it will insert a new node recursively
-	@Override
-	public void insertNode(T newData,Node<T> node) {
+	private void insertNode(T newData,Node<T> node) {
 		if(newData.compareTo(node.getData())<0) {
 			if(node.getLeftChild()!=null) {
 				insertNode(newData,node.getLeftChild());
@@ -43,25 +92,42 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
 	@Override
 	public void delete(T data) {
-		// TODO Auto-generated method stub
+		if(root!=null) {
+			root=delete(root,data);
+		}
 		
 	}
+	
+
 	//get max node
 	//keep on going right
-	@Override
-	public T getMax(Node<T> node) {
+	
+	private T getMax(Node<T> node) {
 		if(node.getRightChild()!=null)
 			return getMax(node.getRightChild());
 		return node.getData();
 	}
 	//get min node
 	//keep on going left
-	@Override
-	public T getMin(Node<T> node) {
+	
+	private T getMin(Node<T> node) {
 		if(node.getLeftChild()!=null) {
 			return getMin(node.getLeftChild());
 		}
 		return node.getData();
 	}
 	//main algorithm of BST
+
+	@Override
+	public T getMaxValue() {
+		if(root==null)return null;
+		return getMax(root);
+	}
+
+	@Override
+	public T getMinValue() {
+		if(root==null)
+		return null;
+		return getMin(root);
+	}
 }

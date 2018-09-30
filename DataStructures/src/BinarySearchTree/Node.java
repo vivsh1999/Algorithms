@@ -28,6 +28,7 @@ public class Node<T> {
 	}
 	public void setLeftChild(Node<T> leftChild) {
 		this.leftChild = leftChild;
+
 	}
 	
 	
@@ -37,4 +38,6 @@ public class Node<T> {
 		
 		return this.data.toString();
 	}
+
+	
 }
