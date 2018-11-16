@@ -21,8 +21,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 		}
 		
 	}
+	//structure for other delete method
+	
 	private Node<T> delete(Node<T> node, T data) {
+		//return null for no entries or empty node
 		if(node==null)return null;
+		//if data at node is less than the data at present node go to left
 		if(data.compareTo(node.getData())<0) {
 			node.setLeftChild(delete(node.getLeftChild(),data));
 		}else if(data.compareTo(node.getData())>0)
