@@ -1,10 +1,13 @@
 package AVL;
 
+//node class : functions and data for each node
 public class Node {
 	private int data;
 	private Node leftNode;
 	private Node rightNode;
-	private int height;
+    private int height;
+
+    //getters and setters
 	public int getData() {
 		return data;
 	}
