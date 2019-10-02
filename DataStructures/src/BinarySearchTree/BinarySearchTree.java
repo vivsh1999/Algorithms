@@ -67,7 +67,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	private void inOrderTraverse(Node<T> node) {
 		if(node.getLeftChild()!=null)
 			inOrderTraverse(node.getLeftChild());
-		System.out.print(node+"->");
+		System.out.print(node+"-> ");
 		if(node.getRightChild()!=null) {
 			inOrderTraverse(node.getRightChild());
 		}
