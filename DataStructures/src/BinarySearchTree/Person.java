@@ -16,7 +16,12 @@ public class Person implements Comparable<Person>{
 		// TODO Auto-generated method stub
 		return name.compareTo(person.getName());
 	}
-
+	
+	public boolean isSame(Person person)
+	{
+        return (person.name.equals(this.name) && person.age==this.age);
+	}
+	
 	@Override
 	public String toString() {
 		return "[" + this.name + "," + this.age +"]";

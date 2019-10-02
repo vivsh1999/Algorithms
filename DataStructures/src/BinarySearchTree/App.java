@@ -21,10 +21,10 @@ public class App {
 	Tree<Person> bst=new BinarySearchTree<>();
 	//Person a("vivek",19),b("she",19),c("us",0);
 	Person a=new Person("vivek",19);
-	Person b=new Person("she",19);
-	Person c=new Person("us",0);
-	Person d=new Person("love",999999999);
-	Person e=new Person("other",-1);
+	Person b=new Person("sharma",19);
+	Person c=new Person("ram",0);
+	Person d=new Person("temp1",999999999);
+	Person e=new Person("temp2",-1);
 	
 	//inserting persons
 	bst.insert(a);
