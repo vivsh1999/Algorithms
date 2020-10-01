@@ -1,0 +1,45 @@
+// dp problem
+class Solution {
+public:
+    int start=0,maxm=1;
+    int memo[1001][1001];
+    string longestPalindrome(string s) {
+        if(s=="")
+            return "";
+        int len=s.size();
+        memset(memo,0,sizeof(memo));
+        
+        for(int i=0;i<len;i++)
+            memo[i][i]=1;
+        for(int i=0;i<len-1;i++)
+        {
+            if(s[i]==s[i+1])
+            {
+                memo[i][i+1]=1;
+                start=i;
+                maxm=2;
+            }    
+        }
+        int k=3;
+        for(;k<=len;k++)
+        {
+            for(int i=0;i+k<=len;i++)
+            {
+                int j=i+k-1;
+                if (memo[i + 1][j - 1]==1 
+                    && s[i] == s[j]) { 
+                    memo[i][j] = 1; 
+  
+                    if (k > maxm) { 
+                        start = i; 
+                        maxm = k; 
+                    } 
+                } 
+                
+            }
+        }
+        return s.substr(start,maxm);
+    }
+    
+    
+};
